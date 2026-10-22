@@ -4,10 +4,9 @@ Deterministic rules and typed wire contracts for the persistent multiplayer game
 
 ## What belongs here
 
-- Seeded 38 × 38 terrain and resource initialization.
-- Isometric coordinate conversion and four-neighbor A* pathfinding.
-- Collision, building footprints, resource costs and range validation.
-- Strict Zod request schemas and TypeScript Socket.IO event contracts.
+- `world.ts` — seeded 48 × 48 terrain (`WORLD_VERSION` 2), seven named regions, village landmarks, villagers, goblin camps, isometric conversion and bounded four-neighbor A*.
+- `rules.ts` — resources and items, tool tiers and yields, building recipes with level gates, production and farm timers, prices, experience curve, goblin stats and spawns, the 13-quest chain, resource placement, collision and placement/gathering/build validation.
+- `contracts.ts` — strict Zod request schemas and the TypeScript Socket.IO contracts, including snapshots, effects and chat.
 
 There is no database, rendering engine, HTTP server or browser state here. Clients use these rules for previews; the server independently validates every action. Importing this package does not make client data authoritative.
 
@@ -22,7 +21,7 @@ pnpm test
 pnpm build
 ```
 
-Six tests cover every tile's coordinate round trip, deterministic resource placement, A* obstacles, placement rules, affordability, gathering range and depletion.
+Eleven tests cover every tile's coordinate round trip, deterministic resource placement, reachability of every camp and villager from the spawn, A* obstacles, placement rules (roads, camps, villagers, level, range), affordability, gathering and tool yields, production/crop/rest timers, level-ups and quest progression.
 
 ## Dependency distribution
 
