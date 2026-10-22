@@ -2,12 +2,29 @@
   "name": "@logs/shared",
   "version": "0.1.0",
   "private": true,
+  "description": "Deterministic world rules and typed network contracts for Lord of the Logs",
+  "packageManager": "pnpm@9.15.9",
+  "files": [
+    "dist"
+  ],
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsc -p tsconfig.json"
+    "build": "tsc -p tsconfig.json",
+    "prepare": "npm run build",
+    "test": "vitest run",
+    "lint": "eslint .",
+    "format": "prettier --write ."
   },
   "dependencies": {
     "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "typescript": "~5.8.2",
+    "vitest": "^3.0.8",
+    "eslint": "^9.22.0",
+    "@eslint/js": "^9.22.0",
+    "typescript-eslint": "^8.26.0",
+    "prettier": "^3.5.3"
   }
 }
