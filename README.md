@@ -26,7 +26,7 @@ Six tests cover every tile's coordinate round trip, deterministic resource place
 
 ## Dependency distribution
 
-Consumers pin this Git repository to a **full commit SHA** in `package.json` and commit their lockfiles. This avoids requiring npm registry credentials for the public demo. The `prepare` lifecycle compiles `dist` during Git dependency installation. Git, Node and a package manager are required during installation; the resulting package runs without TypeScript compilation at runtime.
+Consumers pin this Git repository to a **full commit SHA** in `package.json` and commit their lockfiles. This avoids requiring npm registry credentials for the public demo. The small compiled `dist` distribution is versioned alongside its source, so Git installation does not depend on lifecycle-script execution. CI rebuilds it and checks for drift. Consumers need no compiler at runtime.
 
 Rule changes require coordinated dependency updates in both applications. Changes to terrain geometry additionally require an explicit world-version/data migration in the server. Do not silently regenerate a persistent world with different geometry.
 
